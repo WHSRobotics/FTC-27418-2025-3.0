@@ -4,7 +4,6 @@ package org.whitneyrobotics.ftc.teamcode.Tests.Functionality.Motor;
 
 // Imports:
 import org.whitneyrobotics.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
-
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
