@@ -1,11 +1,11 @@
 // Written by: Christopher Gholmieh
 // Package:
-package org.firstinspires.ftc.teamcode.OpMode.TeleOp;
+package org.whitneyrobotics.ftc.teamcode.TeleOp.TeleOp;
 
 // Imports:
-import org.firstinspires.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
-import org.firstinspires.ftc.teamcode.Subsystems.Implementation;
-import org.firstinspires.ftc.teamcode.Constants.Channel.Channel;
+import org.whitneyrobotics.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
+import org.whitneyrobotics.ftc.teamcode.Subsystems.Implementation;
+import org.whitneyrobotics.ftc.teamcode.Constants.Channel.Channel;
 
 
 // Class:
