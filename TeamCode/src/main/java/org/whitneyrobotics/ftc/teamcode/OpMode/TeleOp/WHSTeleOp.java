@@ -1,6 +1,6 @@
 // Written by: Christopher Gholmieh
 // Package:
-package org.whitneyrobotics.ftc.teamcode.TeleOp.TeleOp;
+package org.whitneyrobotics.ftc.teamcode.OpMode.TeleOp;
 
 // Imports:
 import org.whitneyrobotics.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
