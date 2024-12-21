@@ -70,11 +70,11 @@ public class Mecanum implements Subsystem {
         back_right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         back_left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        front_right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        front_left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        front_right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        front_left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        back_right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        back_left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        back_right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        back_left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     // Methods:
