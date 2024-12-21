@@ -46,14 +46,17 @@ public class ServoTest extends OpModeEx {
     // Loop:
     @Override
     protected void loopInternal() {
+        // Forward:
         gamepad1.BUMPER_LEFT.onPress(() -> {
             servo.setPosition(Positions.FORWARD.value);
         });
 
+        // Reverse:
         gamepad1.BUMPER_RIGHT.onPress(() -> {
             servo.setPosition(Positions.REVERSE.value);
         });
 
+        // Inert:
         gamepad1.BUMPER_LEFT.onRelease(() -> {
             servo.setPosition(Positions.INERT.value);
 
