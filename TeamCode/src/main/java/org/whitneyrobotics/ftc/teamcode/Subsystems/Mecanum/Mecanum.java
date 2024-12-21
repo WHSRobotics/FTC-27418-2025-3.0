@@ -97,7 +97,7 @@ public class Mecanum implements Subsystem {
     public void update(Channel channel) {
         // Variables (Assignment):
         double gamepad_one_right_stick_x = apply_deadzone(channel.gamepad_one_right_stick_x);
-        double gamepad_one_left_stick_x = apply_deadzone(channel.gamepad_one_left_stick_x);
+        double gamepad_one_left_stick_x = apply_deadzone(-channel.gamepad_one_left_stick_x);
         double gamepad_one_left_stick_y = apply_deadzone(-channel.gamepad_one_left_stick_y);
 
         // Logic:
@@ -154,12 +154,22 @@ public class Mecanum implements Subsystem {
         ) / denominator;
 
         // Logic:
-        if (channel.gamepad_one_left_bumper) {
-            front_right.setPower(front_right_power / 3);
-            front_left.setPower(front_left_power / 3);
+        if (channel.gamepad_one_right_bumper) {
+            front_right.setPower(0.0);
+            front_left.setPower(0.0);
 
-            back_right.setPower(back_right_power / 3);
-            back_left.setPower(back_left_power / 3);
+            back_right.setPower(0.0);
+            back_left.setPower(0.0);
+
+            return;
+        }
+
+        if (channel.gamepad_one_left_bumper) {
+            front_right.setPower(front_right_power / 4);
+            front_left.setPower(front_left_power / 4);
+
+            back_right.setPower(back_right_power / 4);
+            back_left.setPower(back_left_power / 4);
 
             return;
         }

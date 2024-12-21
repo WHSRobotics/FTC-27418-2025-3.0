@@ -3,12 +3,15 @@
 package org.whitneyrobotics.ftc.teamcode.OpMode.TeleOp;
 
 // Imports:
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.whitneyrobotics.ftc.teamcode.Extensions.OpModeEx.OpModeEx;
 import org.whitneyrobotics.ftc.teamcode.Subsystems.Implementation;
 import org.whitneyrobotics.ftc.teamcode.Constants.Channel.Channel;
 
 
 // Class:
+@TeleOp(name = "27418-mecanum", group = "27418-opmodes")
 public class WHSTeleOp extends OpModeEx  {
     // Variables (Declaration):
     // Implementation:
