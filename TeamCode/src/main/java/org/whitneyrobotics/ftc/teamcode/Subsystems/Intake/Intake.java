@@ -14,8 +14,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 // Class:
 public class Intake implements Subsystem {
     // Variables (Declaration):
-    protected DcMotor horizontal_slide_right;
-    protected DcMotor horizontal_slide_left;
+    protected DcMotor vertical_slide_right;
+    protected DcMotor vertical_slide_left;
 
     protected Servo intake_claw;
 
@@ -46,14 +46,14 @@ public class Intake implements Subsystem {
     // Constructor:
     public Intake(HardwareMap hardware_map) {
         // Variables (Definition):
-        horizontal_slide_right = hardware_map.get(DcMotor.class, "horizontal-slide-right");
-        horizontal_slide_left = hardware_map.get(DcMotor.class, "horizontal-slide-left");
+        vertical_slide_right = hardware_map.get(DcMotor.class, "vertical-slide-right");
+        vertical_slide_left = hardware_map.get(DcMotor.class, "vertical-slide-left");
 
         intake_claw = hardware_map.get(Servo.class, "intake-claw");
 
         // Initialization:
-        horizontal_slide_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        horizontal_slide_left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        vertical_slide_right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        vertical_slide_left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     // Methods:
@@ -83,8 +83,8 @@ public class Intake implements Subsystem {
      * @param linear_slide_power The power you would like both linear slide motors to be set to.
      */
     private void synchronized_power(double linear_slide_power) {
-        horizontal_slide_right.setPower(linear_slide_power);
-        horizontal_slide_left.setPower(linear_slide_power);
+        vertical_slide_right.setPower(linear_slide_power);
+        vertical_slide_left.setPower(linear_slide_power);
     }
 
     /**
