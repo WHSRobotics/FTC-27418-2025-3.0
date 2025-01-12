@@ -277,6 +277,16 @@ public class IntoTheDeepMecanumDrive extends MecanumDrive {
         setDrivePower(vel);
     }
 
+    public void fieldCentricDrive(Pose2d drivePower) {
+        Pose2d vel = drivePower;
+        double rotX = drivePower.getX() * Math.cos(-getPoseEstimate().getHeading()) - drivePower.getY() * Math.sin(-getPoseEstimate().getHeading());
+        double rotY = drivePower.getX() * Math.sin(-getPoseEstimate().getHeading()) + drivePower.getY() * Math.cos(-getPoseEstimate().getHeading());
+        vel = new Pose2d(
+            rotX,rotY,drivePower.getHeading()
+        );
+        setDrivePower(vel);
+    }
+
     @NonNull
     @Override
     public List<Double> getWheelPositions() {
