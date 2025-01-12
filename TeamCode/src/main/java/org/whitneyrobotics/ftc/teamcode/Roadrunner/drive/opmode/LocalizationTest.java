@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.whitneyrobotics.ftc.teamcode.Roadrunner.drive.IntoTheDeepMecanumDrive;
 
+
 /**
  * This is a simple teleop routine for testing localization. Drive the robot around like a normal
  * teleop routine and make sure the robot's estimated pose matches the robot's actual pose (slight
@@ -25,13 +26,17 @@ public class LocalizationTest extends LinearOpMode {
         waitForStart();
 
         while (!isStopRequested()) {
-            drive.setWeightedDrivePower(
-                    new Pose2d(
-                            -gamepad1.left_stick_y,
-                            -gamepad1.left_stick_x,
-                            -gamepad1.right_stick_x
-                    )
-            );
+            if (gamepad1.left_trigger==1) {
+                drive.fieldCentricDrive(
+                        new Pose2d(
+                                -gamepad1.left_stick_y*0.5,
+                                -gamepad1.left_stick_x*0.5,
+                                gamepad1.right_stick_x*0.5
+                        )
+                );} else {
+                drive.fieldCentricDrive(new Pose2d(-gamepad1.left_stick_y, -gamepad1.left_stick_x, gamepad1.right_stick_x));
+            }
+
 
             drive.update();
 

@@ -20,8 +20,10 @@ public class Intake implements Subsystem {
     protected Servo intake_claw;
 
     // Variables (Assignment):
-    protected final double conversion = 0.25;
+    protected final double conversion = 0.3;
     protected double power = 0.0;
+
+    protected double feedforward = 0.1;
 
     protected Positions claw_position = Positions.CLAW_OPEN_POSITION;
 
@@ -88,6 +90,15 @@ public class Intake implements Subsystem {
     }
 
     /**
+     * Give extra power when staying up so it doesn't fall
+     * @param power The power you want
+     * @param adjuster What power you need to stay up/hover
+     */
+    private double adjust(double power, double adjuster) {
+        return (power>=0)?(power+adjuster):power;
+    }
+
+    /**
      * Adjusts the claw position to the desired position.
      *
      * @param claw_position The position you would like the claw to be set to.
@@ -96,23 +107,34 @@ public class Intake implements Subsystem {
         intake_claw.setPosition(claw_position);
     }
 
+    public double get_claw_position() {
+        return intake_claw.getPosition();
+    }
+
+    public boolean captured() {
+        if (get_claw_position() != claw_position.claw_position) {
+            return true;
+        } else return false;
+    }
+
     @Override
     public void update(Channel channel) {
         // Power:
-        power = clamp(-1.0, (power + (-channel.gamepad_one_left_stick_x) * conversion), 1.0);
+        power = clamp(-1.0, adjust((power + (-channel.gamepad_one_left_stick_x) * conversion), feedforward), 1.0);
 
         // Logic:
         // Slides:
         synchronized_power(power);
 
-
         // Claw:
         if (channel.gamepad_two_right_bumper) {
-            claw_position = Positions.CLAW_CLOSED_POSITION;
-        } else if (channel.gamepad_two_left_bumper) {
-            claw_position = Positions.CLAW_OPEN_POSITION;
+            if (claw_position == Positions.CLAW_OPEN_POSITION) {
+                claw_position = Positions.CLAW_CLOSED_POSITION;
+            } else claw_position = Positions.CLAW_OPEN_POSITION;
         }
-
         adjust_claw(claw_position.claw_position);
+
+
+
     }
 }
